@@ -1,0 +1,14 @@
+Hey,
+
+Thanks for taking the time to chat with us. Based on our discussion, we're keen to move forward and would like to invite you back for the next stage in our hiring process, a technical interview.
+
+This interview includes a take-home assignment to assess your technical skills and problem-solving abilities. We estimate that it will take about 1.5 to 2.5 hours to complete. All necessary instructions can be found in the README.md file, accessible by unzipping the attached file in this email or at this link: https://frame-one-software.github.io/take-home/README.html. If any questions come up, feel free to reach out.
+
+To schedule the technical interview, please use our Calendly link: https://calendly.com/d/3xs-3m9-sdq/technical-interview-at-frame-one-software. It's best to book a slot as soon as possible and submit your take-home assignment at least 6 hours prior to the interview, allowing us sufficient time for review.
+
+During the interview, conducted over Google Meet, we'll ask you to share your screen and walk us through a coding task from the take-home assignment. It's a great opportunity to showcase your technical prowess and thought process.
+
+Looking forward to seeing your approach to the assignment and having a more in-depth technical discussion.
+
+Regards,
+Christopher

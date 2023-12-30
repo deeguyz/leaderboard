@@ -1,0 +1,70 @@
+name: Package and Release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Copy Meta Directory
+      run: cp -r meta/ static/
+
+    - name: Converts Markdown to HTML
+      uses: jaywcjlove/markdown-to-html-cli@v4.0.3
+      with:
+        source: README.md
+        output: static/README.html
+    
+    - name: Converts Markdown to HTML
+      uses: jaywcjlove/markdown-to-html-cli@v4.0.3
+      with:
+        source: static/user-story-3.md
+        output: static/user-story-3.html
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./static
+        user_name: github-actions[bot]
+        user_email: 41898282+github-actions[bot]@users.noreply.github.com
+
+    - name: Remove Directories
+      run: |
+        rm -rf .github
+        rm -rf .git
+        rm -rf ignore
+        rm -rf static
+
+    - name: Zip take-home
+      run: zip -r take-home-v${{ github.run_number }}.zip .
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: v${{ github.run_number }}
+        release_name: v${{ github.run_number }}
+        draft: false
+        prerelease: false
+
+    - name: Upload Release Asset
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./take-home-v${{ github.run_number }}.zip
+        asset_name: take-home-v${{ github.run_number }}.zip
+        asset_content_type: application/zip
+
+
