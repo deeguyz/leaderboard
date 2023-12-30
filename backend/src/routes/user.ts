@@ -57,7 +57,6 @@ userRouter.post("/:userId/join/:communityId", async (req, res) => {
     { $set: { communityid: communityId } }
   );
 
-  // TODO: Implement the functionality to join a community
   res.send(user);
 });
 
@@ -75,7 +74,6 @@ userRouter.delete("/:userId/leave/:communityId", async (req, res) => {
     { $set: { communityid: null } }
   );
 
-  // TODO: Implement the functionality to leave a community
   res.send(user);
 });
 

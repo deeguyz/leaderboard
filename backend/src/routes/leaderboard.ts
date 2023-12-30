@@ -20,7 +20,7 @@ leaderboardRouter.get("/", async (_, res) => {
     },
     {
       $lookup: {
-        from: "communities", // Update with the actual collection name for CommunityModel
+        from: "communities",
         localField: "objectIdCommunityId",
         foreignField: "_id",
         as: "community",

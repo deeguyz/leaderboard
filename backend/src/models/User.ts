@@ -1,5 +1,4 @@
 import { prop, getModelForClass } from "@typegoose/typegoose";
-import { ObjectId } from "mongoose";
 
 class User {
   @prop({ required: true })

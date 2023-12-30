@@ -41,14 +41,6 @@ utilsRouter.get("/inflate-db", async (_, res) => {
     const oneYearAgo = new Date();
     oneYearAgo.setFullYear(now.getFullYear() - 1);
 
-    for (let i = 0; i < COMMUNITIES_COUNT; i++) {
-      const community = new CommunityModel({
-        name: `Community ${i}`,
-        logo: `https://picsum.photos/200?random=${i + USERS_COUNT}`,
-      });
-      await community.save();
-    }
-
     for (let i = 0; i < USERS_COUNT; i++) {
       const experiencePoints = [];
       const numberOfEntries = Math.floor(Math.random() * 101);
@@ -73,6 +65,14 @@ utilsRouter.get("/inflate-db", async (_, res) => {
         communityid: null,
       });
       await user.save();
+    }
+
+    for (let i = 0; i < COMMUNITIES_COUNT; i++) {
+      const community = new CommunityModel({
+        name: `Community ${i}`,
+        logo: `https://picsum.photos/200?random=${i + USERS_COUNT}`,
+      });
+      await community.save();
     }
 
     res.sendStatus(200);
